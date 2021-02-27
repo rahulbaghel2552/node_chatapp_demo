@@ -1,7 +1,7 @@
 const socket = io()
 let name;
 let textarea = document.querySelector('#textarea')
-let messageArea = document.querySelector('.message__area')
+let messageArea = document.querySelector('.message_area')
 do {
     name = prompt('Please enter your name: ')
 } while(!name)
@@ -17,7 +17,7 @@ function sendMessage(message) {
         user: name,
         message: message.trim()
     }
-    // Append 
+
     appendMessage(msg, 'outgoing')
     textarea.value = ''
     scrollToBottom()
@@ -39,7 +39,7 @@ function appendMessage(msg, type) {
     messageArea.appendChild(mainDiv)
 }
 
-// Recieve messages 
+
 socket.on('message', (msg) => {
     appendMessage(msg, 'incoming')
     scrollToBottom()
